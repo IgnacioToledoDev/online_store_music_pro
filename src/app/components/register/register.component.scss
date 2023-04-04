@@ -1,0 +1,36 @@
+.border-login {
+  border: 1px solid black;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  width: -12px;
+  height: auto;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+input {
+  padding: 5px;
+}
+
+.btn_links {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  color: blue;
+}
