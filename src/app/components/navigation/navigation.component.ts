@@ -11,5 +11,6 @@ export class NavigationComponent {
 
 
   goToLogin() { this.router.navigate(['/login']); }
+  goToShoppingCart() { this.router.navigate(['/shopping-cart']) }
 
 }
