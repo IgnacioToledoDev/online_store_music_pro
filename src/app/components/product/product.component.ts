@@ -26,6 +26,7 @@ export class ProductComponent {
   addToCart(product: Product) {
     this.shopCartServices.addProduct(product);
   };
+
   addProductos(product: Product) {
     const listProducts = []
     listProducts.push(product)

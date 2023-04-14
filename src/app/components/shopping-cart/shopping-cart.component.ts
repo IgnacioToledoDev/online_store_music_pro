@@ -17,10 +17,10 @@ export class ShoppingCartComponent {
 
   ngOnInit() {
     this.products = this.shopCartServices.products;
+    console.log(this.products)
     this.updateTotalProducts();
     this.updateDiscount();
     this.updateTotal();
-    console.log('Actualizando')
   };
 
   deleteProduct(product: Product) {
@@ -36,18 +36,18 @@ export class ShoppingCartComponent {
     const totalProductObject: Array<any> = this.shopCartServices.getTotal();
     this.totalProducts = totalProductObject[0]
     return this.totalProducts;
-  }
+  };
 
   updateDiscount() {
     const discountObject: Array<any> = this.shopCartServices.getTotal();
     this.discount = discountObject[1];
     return this.discount;
-  }
+  };
 
   updateTotal() {
     const totalObject: Array<any> = this.shopCartServices.getTotal();
     this.total = totalObject[2];
     console.log('llaado', this.total)
     return this.total;
-  }
+  };
 };

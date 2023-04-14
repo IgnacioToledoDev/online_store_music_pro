@@ -7,10 +7,30 @@
         <div class="shop-header m-1">
           <h2>Carro ({{ this.products.length }} productos)</h2>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Producto 1</h5>
-            <p class="card-text">Contenido</p>
+        <h3 class="empaty-cart-shop text-center text-capitalize my-5" *ngIf="products.length === 0"> carrito vacio
+        </h3>
+        <div class="p-2" *ngFor="let product of products">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description}}</p>
+              <div class="row">
+                <div class="col-sm-8">
+                  <p>${{product.price}}</p>
+                </div>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <p>Cantidad: {{ product.amount}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                      <button class="btn" style="background-color: #F3DE2C;"><img src="././assets/icons/trash.png"
+                          alt=""></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
