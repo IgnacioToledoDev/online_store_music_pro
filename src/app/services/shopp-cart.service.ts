@@ -30,14 +30,20 @@ export class ShoppCartService {
     return product;
   }
 
-  getTotal(): string {
+  getTotal(): Array<any> {
     console.log('entrando al obtener el total')
-    let total = 0
+    let total: number = 0
+    let totalProduct: number = 0
+    let discount: number = 0
     for (const producto of this.products) {
-      total += producto.price * producto.amount;
+      totalProduct += producto.price * producto.amount;
     };
-    console.log(total);
-    const formatted = total.toLocaleString('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 });
-    return formatted;
+    discount = this.products.length >= 4 ? totalProduct * 0.1 : 0;
+    const formattedTotalProduct = totalProduct.toLocaleString('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 });
+    const formattedDiscount = discount.toLocaleString('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 });
+    total = this.products.length >= 4 ? totalProduct - discount : total;
+    const formattedTotal = total.toLocaleString('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 });
+    console.log('total', total, 'formattedTotal', formattedTotal)
+    return [formattedTotalProduct, formattedDiscount, formattedTotal];
   };
 };
