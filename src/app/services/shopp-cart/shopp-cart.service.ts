@@ -19,8 +19,8 @@ export class ShoppCartService {
    */
   addProduct(product: Product) {
     if (!this.products.includes(product)) {
+      product.amount += 1;
       this.products.push(product);
-      console.log('hola', this.products);
       this.getTotal();
       return this.products;
     }
@@ -34,11 +34,19 @@ export class ShoppCartService {
 
   deleteProduct(product: Product) {
     const index = this.products.indexOf(product);
-    if (index !== -1) {
-      this.products.splice(index, 1);
-    };
-    this.getTotal();
-    return this.products;
+    if (product.amount === 1) {
+      if (index !== -1) {
+        this.products.splice(index, 1);
+      };
+      this.getTotal();
+      return this.products;
+    }
+    if (product.amount > 1) {
+      product.amount -= 1;
+      this.getTotal()
+      return product;
+    }
+    return product;
   };
   //VENDEDORES
   updateProduct(product: Product, amount: number) {

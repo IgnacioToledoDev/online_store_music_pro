@@ -1,6 +1,8 @@
 import { ShoppCartService } from '../../services/shopp-cart/shopp-cart.service';
 import { Product } from '../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -8,21 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  constructor(private shopCartServices: ShoppCartService) { }
-  productTest: Product = {
-    _id: '1',
-    series: 'nose',
-    code: 'nose123',
-    name: 'Guitarra',
-    brand: 'Sonic',
-    amount: 1,
-    image: 'Fondo.png',
-    description: 'guitarra electrica de muy buena calidad',
-    price: 150000
+  products: Product[] = [];
+
+  constructor(private shopCartServices: ShoppCartService, private productServ: ProductService) { };
+
+  async ngOnInit() {
+    await this.productServ.getAllProducts().subscribe(product => {
+      this.products = product;
+    });
+    console.log(this.products);
   };
 
-  ngOnInit() {
-  }
   addToCart(product: Product) {
     this.shopCartServices.addProduct(product);
   };

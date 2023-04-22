@@ -7,7 +7,7 @@ import { Auth } from '../../interfaces/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private url: string = "localhost:8080/auth"
+  private url: string = "http://localhost:8080/auth"
   constructor(private http: HttpClient) { };
 
   registerNewUser(user: Auth): Observable<any> {

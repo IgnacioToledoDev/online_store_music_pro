@@ -17,7 +17,6 @@ export class ShoppingCartComponent {
 
   ngOnInit() {
     this.products = this.shopCartServices.products;
-    console.log(this.products)
     this.updateTotalProducts();
     this.updateDiscount();
     this.updateTotal();
@@ -47,7 +46,6 @@ export class ShoppingCartComponent {
   updateTotal() {
     const totalObject: Array<any> = this.shopCartServices.getTotal();
     this.total = totalObject[2];
-    console.log('llaado', this.total)
     return this.total;
   };
 };

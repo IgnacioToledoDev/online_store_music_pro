@@ -8,7 +8,7 @@ import { Product } from '../../interfaces/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private url: string = "localhost:8080/api"
+  private url: string = "http://localhost:8080/api"
   constructor(private http: HttpClient) { };
 
   getAllProducts(): Observable<any> {

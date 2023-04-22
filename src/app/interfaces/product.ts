@@ -8,6 +8,7 @@ export interface Product {
   description: string,
   amount: number,
   price: number,
+  stock?: number
 };
 
 export interface soldProduct {
