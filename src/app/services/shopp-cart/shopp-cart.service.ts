@@ -1,4 +1,4 @@
-import { Product } from './../interfaces/product';
+import { Product } from '../../interfaces/product';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -40,7 +40,7 @@ export class ShoppCartService {
     this.getTotal();
     return this.products;
   };
-
+  //VENDEDORES
   updateProduct(product: Product, amount: number) {
     product.amount = amount;
     this.getTotal();
