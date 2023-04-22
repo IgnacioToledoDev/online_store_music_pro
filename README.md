@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+TODO BUGS FIXED
+BUG -> SHOP CART WHEN IT HAVE 4 ELEMENTS ON THE ARRAY AND DELETE 1 OF ELEMENTS AND SPLICE FUCTION DISCOUNT IS EQUAL WHEN DISCOUNT SHOULD BE 0;
+FIXED -> FIXED PRODUCTS WITH AMOUNT 500
+TODO -> VIEWS DIFFERENT USERS
+TODO -> LOCALSTORAGE FOR NOT DELETE THE SHOP CART WHEN RELOAD PAGE
+TODO OPTIONAL -> SHOULD BE UPGRADE/UPDATE THE NAVBAR

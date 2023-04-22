@@ -41,6 +41,7 @@ export class ShoppCartService {
     if (product.amount === 1) {
       if (index !== -1) {
         this.products.splice(index, 1);
+        console.log(this.products);
       };
       this.getTotal();
       return this.products;
@@ -50,6 +51,7 @@ export class ShoppCartService {
       this.getTotal()
       return product;
     }
+    this.getTotal();
     return product;
   };
   //VENDEDORES
@@ -73,6 +75,9 @@ export class ShoppCartService {
     let total: number = 0
     let totalProduct: number = 0
     let discount: number = 0
+    if (this.products.length > 4) {
+      discount = 0;
+    }
     for (const producto of this.products) {
       totalProduct += producto.price * producto.amount;
     };
@@ -83,4 +88,6 @@ export class ShoppCartService {
     const formattedTotal = total.toLocaleString('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 });
     return [formattedTotalProduct, formattedDiscount, formattedTotal];
   };
+
+  /**TODO -> LOCALSTORAGE FOR USER ON SHOP CART FOR NOT DELETE THE PRODUCTS */
 };
