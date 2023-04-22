@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(private router: Router) { }
 
+  /**
+   *
+   * @description navigate to route register
+   * @memberof LoginComponent
+   */
   goToRegister() {
     this.router.navigate(['/register'])
   }

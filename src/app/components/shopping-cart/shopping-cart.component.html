@@ -4,13 +4,36 @@
   <div class="shop-body">
     <div class="row my-3 pe-auto">
       <div class="col-lg-8">
-        <div class="shop-header m-1">
-          <h2>Carro (6 productos)</h2>
+        <div class="shop-header m-1" *ngIf="this.products.length >= 0 && this.products.length <= 1">
+          <h2>Carro ({{ this.products.length }} producto)</h2>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Producto 1</h5>
-            <p class="card-text">Contenido</p>
+        <div class="shop-header m-1" *ngIf="this.products.length >= 2">
+          <h2>Carro ({{ this.products.length }} productos</h2>
+        </div>
+        <h3 class="empaty-cart-shop text-center text-capitalize my-5" *ngIf="products.length === 0"> carrito vacio
+        </h3>
+        <div class="p-2" *ngFor="let product of products">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description}}</p>
+              <div class="row">
+                <div class="col-sm-8">
+                  <p>${{product.price}}</p>
+                </div>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <p>Cantidad: {{ product.amount}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                      <button class="btn" style="background-color: #F3DE2C;"><img src="././assets/icons/trash.png"
+                          alt="" (click)="deleteProduct(product)"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -22,20 +45,26 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-12 p-2">
-                    total:
+                    Total productos:
                   </div>
                   <div class="col-12 p-2">
                     Descuento:
+                  </div>
+                  <div class="col-12 p-2">
+                    Total:
                   </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="row">
-                  <div class="col-12 p-2">
-                    {{ total }}
+                  <div class="col-10 p-2">
+                    {{ totalProducts }}
                   </div>
                   <div class="col-12 p-2">
-                    $ 1.400.000
+                    {{ discount }}
+                  </div>
+                  <div class="col-12 p-2">
+                    {{ total }}
                   </div>
                 </div>
               </div>

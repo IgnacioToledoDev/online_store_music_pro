@@ -1,6 +1,6 @@
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
-import { ShoppCartService } from 'src/app/services/shopp-cart.service';
+import { ShoppCartService } from 'src/app/services/shopp-cart/shopp-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,14 +9,17 @@ import { ShoppCartService } from 'src/app/services/shopp-cart.service';
 })
 export class ShoppingCartComponent {
   products: Product[] = [];
-  total: string = '0';
+  totalProducts: object = {};
+  discount: object = {};
+  total: object = {}
 
   constructor(private shopCartServices: ShoppCartService) { }
 
   ngOnInit() {
     this.products = this.shopCartServices.products;
+    this.updateTotalProducts();
+    this.updateDiscount();
     this.updateTotal();
-    console.log('Actualizando total')
   };
 
   deleteProduct(product: Product) {
@@ -25,10 +28,24 @@ export class ShoppingCartComponent {
 
   updateProduct(product: Product, amount: number) {
     this.shopCartServices.updateProduct(product, amount)
-    this.updateTotal();
+    this.updateTotalProducts();
+  };
+
+  updateTotalProducts() {
+    const totalProductObject: Array<any> = this.shopCartServices.getTotal();
+    this.totalProducts = totalProductObject[0]
+    return this.totalProducts;
+  };
+
+  updateDiscount() {
+    const discountObject: Array<any> = this.shopCartServices.getTotal();
+    this.discount = discountObject[1];
+    return this.discount;
   };
 
   updateTotal() {
-    this.total = this.shopCartServices.getTotal();
-  }
+    const totalObject: Array<any> = this.shopCartServices.getTotal();
+    this.total = totalObject[2];
+    return this.total;
+  };
 };

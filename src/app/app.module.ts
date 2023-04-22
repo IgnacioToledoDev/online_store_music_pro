@@ -11,6 +11,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ProductsComponent } from './components/products/products.component';
     ProductsComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     App2RoutingModule,
     BrowserAnimationsModule,

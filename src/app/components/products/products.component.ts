@@ -1,3 +1,4 @@
+import { ProductService } from './../../services/product/product.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
+  constructor() { };
+
 
 }
