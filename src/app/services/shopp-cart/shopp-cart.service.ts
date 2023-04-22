@@ -19,8 +19,12 @@ export class ShoppCartService {
    */
   addProduct(product: Product) {
     if (!this.products.includes(product)) {
-      product.amount += 1;
+      if (product.amount === 0) {
+        product.amount += 1;
+      }
       this.products.push(product);
+      console.log(this.products);
+
       this.getTotal();
       return this.products;
     }
