@@ -18,17 +18,9 @@ export class ProductComponent {
     await this.productServ.getAllProducts().subscribe(product => {
       this.products = product;
     });
-    console.log(this.products);
   };
 
   addToCart(product: Product) {
     this.shopCartServices.addProduct(product);
   };
-
-  addProductos(product: Product) {
-    const listProducts = []
-    listProducts.push(product)
-    return listProducts;
-  }
-
 };

@@ -10,8 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './components/register/register.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductComponent } from './components/product/product.component';
-import { ProductsComponent } from './components/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,9 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     ShoppingCartComponent,
     ProductComponent,
-    ProductsComponent,
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     App2RoutingModule,

@@ -9,9 +9,9 @@ import { ShoppCartService } from 'src/app/services/shopp-cart/shopp-cart.service
 })
 export class ShoppingCartComponent {
   products: Product[] = [];
-  totalProducts: object = {};
-  discount: object = {};
-  total: object = {}
+  totalProducts: string = ''
+  discount: string = '';
+  total: string = ''
 
   constructor(private shopCartServices: ShoppCartService) { }
 
@@ -24,6 +24,9 @@ export class ShoppingCartComponent {
 
   deleteProduct(product: Product) {
     this.shopCartServices.deleteProduct(product);
+    this.updateTotalProducts();
+    this.updateDiscount();
+    this.updateTotal();
   };
 
   updateProduct(product: Product, amount: number) {

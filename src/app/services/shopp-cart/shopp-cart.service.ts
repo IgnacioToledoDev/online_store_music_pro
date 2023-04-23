@@ -1,4 +1,4 @@
-import { Product } from '../../interfaces/product';
+import { Product } from './../../interfaces/product';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -23,8 +23,6 @@ export class ShoppCartService {
         product.amount += 1;
       }
       this.products.push(product);
-      console.log(this.products);
-
       this.getTotal();
       return this.products;
     }
@@ -36,23 +34,36 @@ export class ShoppCartService {
     return this.products;
   };
 
+  /**
+   * @param product
+   * @interface Product
+   * @arguments products @type Array of @interface  Product
+   * @returns product
+   * @description search on array this.products
+   */
   deleteProduct(product: Product) {
     const index = this.products.indexOf(product);
     if (product.amount === 1) {
       if (index !== -1) {
         this.products.splice(index, 1);
+        console.log(this.products);
+        this.getTotal();
       };
-      this.getTotal();
+      console.log(this.products);
       return this.products;
     }
     if (product.amount > 1) {
       product.amount -= 1;
       this.getTotal()
+      console.log(this.products);
       return product;
     }
+    console.log(this.products);
+    this.getTotal();
     return product;
   };
-  //VENDEDORES
+
+  //sellers
   updateProduct(product: Product, amount: number) {
     product.amount = amount;
     this.getTotal();
@@ -81,6 +92,7 @@ export class ShoppCartService {
     const formattedDiscount = discount.toLocaleString('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 });
     total = this.products.length >= 4 ? totalProduct - discount : totalProduct;
     const formattedTotal = total.toLocaleString('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 });
+    console.log(total, totalProduct, discount);
     return [formattedTotalProduct, formattedDiscount, formattedTotal];
   };
 };
